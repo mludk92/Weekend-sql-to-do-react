@@ -38,6 +38,18 @@ router.get('/',(req,res)=>{
         //error message
     })
 })
+//postman http://localhost:5001/todo
+/*
+[
+    {
+        "id": 1,
+        "task": "Create a Todo App",
+        "priority_lev": "High",
+        "status_comp": true
+    }
+]
+ */
+
 // POST
 
 // PUT
