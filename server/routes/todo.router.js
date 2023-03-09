@@ -38,7 +38,7 @@ router.get('/',(req,res)=>{
         //error message
     })
 })
-//postman http://localhost:5001/todo
+//postman test @ http://localhost:5001/todo
 /*
 [
     {
@@ -51,7 +51,20 @@ router.get('/',(req,res)=>{
  */
 
 // POST
-
+router.post('/',(req,res)=>{
+    console.log('IN POST')
+    console.log(req.body)
+    let newToDO = req.body
+    let queryText = `insert into todo("task","priority_Lev","status_comp")
+                values("test post", "Medium", false)`
+                        // $1          $2      $3
+    pool.query(queryText,[newToDO.task, newToDO.priority_Lev, newToDO.status_comp]).then((result)=>{
+        res.sendStatus(201)
+    }).catch((error)=>{
+        console.log(`error in POST ${error}`)
+        res.sendStatus(500)
+    })       
+})
 // PUT
 
 // DELETE
