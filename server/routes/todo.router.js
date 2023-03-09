@@ -57,13 +57,18 @@ router.post('/',(req,res)=>{
     let newToDO = req.body
     let queryText = `insert into todo(task,priority_Lev,status_comp)
                 values($1, $2, $3)`
-    pool.query(queryText,[newToDO.task, newToDO.priority_Lev, false]).then((result)=>{
+                            //text           text               bool
+    pool.query(queryText,[newToDO.task, newToDO.priority_Lev, newToDO.status_comp]).then((result)=>{
         res.sendStatus(201)
     }).catch((error)=>{
         console.log(`error in POST ${error}`)
         res.sendStatus(500)
     })       
 })
+//postman response created. test adding values newTODO.task 
+// newToDO.priority_Lev, and false since bool is required.
+//created row in db null ,null , false  with id 2 
+
 // PUT
 
 // DELETE
