@@ -31,21 +31,19 @@ useEffect(()=> {
 
 return (
 
-        <div>
-            <Header
-                countOfTask = {length(listOfTask)}
-            />
+        <>
+            <Header countOfTaskProp = { length(listOfTask)}/>
                 {
                     listOfTask.map((task)=>(
                         //what we wanter to render
-                        <div id="taskList" key={task.id}>
+                        <div id={"taskList"} key={task.id}>
                             {task.task} <br/> 
                             {task.priority_lev}<br/> 
                             {String(task.status_comp)}
                         </div>
                     ))
                 }
-        </div>
+        </>
 
     )
 }
