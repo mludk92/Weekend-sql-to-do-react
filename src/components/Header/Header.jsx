@@ -1,10 +1,12 @@
+import Form from "../Form/Form"
 
 
+function Header({countOfTask}) {
 
-function Header (props) {
     return (
         <header>
-        <h1> Mitch's Todo App</h1> 
+        <h1> Mitch's Todo App {countOfTask}</h1>
+        
         </header>
         
     ) 

@@ -1,13 +1,19 @@
 import { useState, useEffect } from 'react'
 // We must import axios in each component where we want to use it
 import axios from 'axios'
+import Header from '../Header/Header'
+const length = require('array-length')
+
 
 function Form() {
+
+
     const [task, setTask] = useState('')
     const [priority, setPriority] = useState()
     const [status, setStatus]= useState('')
     const [listOfTask, setListOfTask] = useState(['No Items'])
-
+    let countOfTask = length(listOfTask)
+    
     //GET
 const fetchTaskList = () => {
     axios.get('/todo').then((response)=>{
@@ -24,7 +30,11 @@ useEffect(()=> {
 
 
 return (
+
         <div>
+            <Header
+                countOfTask = {length(listOfTask)}
+            />
                 {
                     listOfTask.map((task)=>(
                         //what we wanter to render
