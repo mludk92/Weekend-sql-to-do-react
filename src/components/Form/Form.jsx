@@ -28,11 +28,11 @@ return (
                 {
                     listOfTask.map((task)=>(
                         //what we wanter to render
-                        <li key={task.id}>
+                        <div id="taskList" key={task.id}>
                             {task.task} <br/> 
                             {task.priority_lev}<br/> 
-                            {task.status_comp.toString()} 
-                        </li>
+                            {String(task.status_comp)}
+                        </div>
                     ))
                 }
         </div>
