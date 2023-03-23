@@ -33,22 +33,38 @@ function TaskList() {
     useEffect(() => {
         fetchTaskList()
     }, []) // run this effect only once, when the component mounts
-// replace this with an axios put 
+//replace this with an axios put 
     const handleToggleStatus = (id) => {
-        // find the task with the matching id
-        // const updatedListOfTask = listOfTask.map((task) => {
-        //   if (task.id === id) {
-        //     return {
-        //       ...task,
-        //       status_comp: !task.status_comp, // toggle the status_comp
-        //     };
-        //   } else {
-        //     return task;
-        //   }
-        // });
+        //find the task with the matching id
+        const updatedListOfTask = listOfTask.map((task) => {
+          if (task.id === id) {
+            return {
+              ...task,
+              status_comp: !task.status_comp, // toggle the status_comp
+            };
+          } else {
+            return task;
+          }
+        });
     
-       // setListOfTask(updatedListOfTask);
+       setListOfTask(updatedListOfTask);
+       axios.put(`/todo/${id}`, { status_comp: !listOfTask.find((task) => task.id === id).status_comp }).then((response)=>{
+                fetchTaskList()
+            }).catch((error)=>{
+                console.log(`error in PUT ${error}`)
+                alert('something went wrong')
+            })
       };
+    //   const handleToggleStatus = (id, newStatus) =>{
+    //     console.log(`updating task status of ${id}`)
+    //     axios.put(`/todo/${id}`, {status_comp: newStatus }).then((response)=>{
+    //         fetchTaskList()
+    //     }).catch((error)=>{
+    //         console.log(`error in PUT ${error}`)
+    //         alert('something went wrong')
+    //     })
+    //   }
+
         const removeTask = (id) => {
         console.log(`removeTask ${id}`)
         axios.delete(`/todo/${id}`)

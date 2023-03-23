@@ -28,7 +28,7 @@ const pool = require('../modules/pool.js');
 router.get('/',(req,res)=>{
     console.log('IN GET')
     //query to get all items from todo table
-    let queryText = `select * from todo`
+    let queryText = `select * from todo order by status_comp`
     pool.query(queryText).then((result)=>{
         //sending table rows for use in JS
         res.send(result.rows)
@@ -71,6 +71,22 @@ router.post('/',(req,res)=>{
 
 // PUT
 
+router.put('/:id', (req, res) => {
+    let update = req.body
+    const sqlText = `
+    update todo
+	set 
+	status_comp = $1
+	where id = $2`
+    
+    pool.query(sqlText, [update.status_comp, req.params.id]).then((result)=>{
+        res.sendStatus(201)
+    }).catch((error)=> {
+        console.log(`error in PUT ${error}`)
+        res.sendStatus(500)
+    })
+})
+
 // DELETE
 router.delete('/:id', (req, res) => {
     // When you fetch all things in these GET routes, strongly encourage ORDER BY
@@ -85,4 +101,7 @@ router.delete('/:id', (req, res) => {
             res.sendStatus(500); // Good server always responds
         })
 })
+
+
+
 module.exports = router;
