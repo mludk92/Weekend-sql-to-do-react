@@ -30,15 +30,15 @@ return (
         <>
         <form onSubmit={submitForm}>
                Task:   
-            <input type="text" value={taskName}
+            <input type="text" value={taskName} required
             onChange={(event)=> setTaskName(event.target.value)}/> 
                Priority:    
             <br />
             
-            <input type="text" value={priority}
+            <input type="text" value={priority} required
             onChange={(event)=>setPriority(event.target.value)}/> 
                Status of Completion:    
-            <input placeholder="true or false"type="boolean" list="bool" value={status}
+            <input placeholder="true or false"type="boolean" list="bool" value={status} required
             onChange={(event)=>setStatus(event.target.value)}/> 
             <input type="submit"/> 
 
