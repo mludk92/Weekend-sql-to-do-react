@@ -1,13 +1,14 @@
 import Form from "../Form/Form"
 
 
-function Header({countOfTaskProp}) {
+function Header({countOfIncomplete,countOfComplete}) {
 
 
     return (
         <header>
         <h1> Mitch's To-do App </h1>
-        <h2> Total Task to complete are {countOfTaskProp}</h2>
+        <h3> Total Task to complete are {countOfIncomplete}</h3>
+        <h3> You have completed {countOfComplete}</h3>
         
         </header>
         

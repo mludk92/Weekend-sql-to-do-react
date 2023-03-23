@@ -26,7 +26,25 @@
   }
   .task-completed {
     text-decoration: line-through;
+    color: maroon;
   }
   .task-not-completed {
     text-decoration: none;
+    color:yellow
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    margin: 5px;
+    justify-content: flex-start;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    font-style: Bold;
+    
+  }
+
+  #subButton {
+
   }

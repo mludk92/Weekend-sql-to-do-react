@@ -8,8 +8,6 @@ function App () {
   return (
     
       <div>
-        <Header />
-        {/* <Form /> */}
         <TaskList />
       </div>
   );
