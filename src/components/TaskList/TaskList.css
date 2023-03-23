@@ -1,0 +1,32 @@
+#taskList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  #taskListHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ddd;
+    padding: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  #taskListHeader span {
+    flex-basis: 33.33%;
+    text-align: center;
+  }
+  
+  #taskList span {
+    flex-basis: 33.33%;
+    text-align: center;
+  }
+  .task-completed {
+    text-decoration: line-through;
+  }
+  .task-not-completed {
+    text-decoration: none;
+  }

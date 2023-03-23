@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import Form from '../Form/Form';
 import Header from '../Header/Header';
+import TaskList from '../TaskList/TaskList';
 import './App.css'
 function App () {
   
@@ -8,7 +9,8 @@ function App () {
     
       <div>
         <Header />
-        <Form />
+        {/* <Form /> */}
+        <TaskList />
       </div>
   );
 
