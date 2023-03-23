@@ -49,7 +49,17 @@ function TaskList() {
     
        // setListOfTask(updatedListOfTask);
       };
-    
+        const removeTask = (id) => {
+        console.log(`removeTask ${id}`)
+        axios.delete(`/todo/${id}`)
+          .then((response) => {
+            fetchTaskList()
+          })
+          .catch((error) => {
+            console.log(`error in removeTask ${error}`)
+            alert('something went wrong')
+        })
+    }
       return (
         <>
         <Header countOfIncomplete= {countOfIncomplete()}
@@ -69,28 +79,32 @@ function TaskList() {
           <div id="taskListHeader">
             <span>Task</span>
             <span>Priority</span>
-            <span>Status</span>
+            <span>Status (Click symbol to update)</span>
+            
           </div>
           {listOfTask.map((task) => (
             <div
-              id="taskList"
               key={task.id}
+              id="taskList"
               className={task.status_comp ? 'completed task-completed' : 'task-not-completed'}
               
             >
-              <span className={task.status_comp ? 'completed' : ''}>
+                <button onClick={() => removeTask(task.id)}>Delete Task</button>
+                <span className={task.status_comp ? 'completed' : ''}>
                 {task.task}
-              </span>
-              <span>{task.priority_lev}</span>
-              <span>
-                {task.status_comp ? (
-                  <span onClick={() => handleToggleStatus(task.id)}className="completed">&#10004;</span>
+                </span>
+                <span>{task.priority_lev}</span>
+                <span>{task.status_comp ? (
+                <span onClick={() => handleToggleStatus(task.id)}className="completed">&#10004;</span>
                   
                 ) : (
-                  <span onClick={() => handleToggleStatus(task.id)} className="not-completed">&#9888;</span>
+                <span onClick={() => handleToggleStatus(task.id)} className="not-completed">&#9888; </span>
                 )}
               </span>
+              
             </div>
+            
+            
           ))}
         </>
       );

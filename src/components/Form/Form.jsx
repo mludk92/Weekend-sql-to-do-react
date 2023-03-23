@@ -22,7 +22,7 @@ function Form({taskName,setTaskName, priority, setPriority, status, setStatus,fe
             alert('Something Went Wrong')
         })
     }
-    
+
 
 
 return (
@@ -40,7 +40,8 @@ return (
                Status of Completion:    
             <input placeholder="true or false"type="boolean" list="bool" value={status} required
             onChange={(event)=>setStatus(event.target.value)}/> 
-            <input type="submit"/> 
+            <input type="submit"/>
+            
 
  
 

@@ -72,5 +72,17 @@ router.post('/',(req,res)=>{
 // PUT
 
 // DELETE
-
+router.delete('/:id', (req, res) => {
+    // When you fetch all things in these GET routes, strongly encourage ORDER BY
+    // so that things always come back in a consistent order 
+    const sqlText = `DELETE FROM "todo" WHERE "id" = $1;`;
+    pool.query(sqlText, [req.params.id])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500); // Good server always responds
+        })
+})
 module.exports = router;
